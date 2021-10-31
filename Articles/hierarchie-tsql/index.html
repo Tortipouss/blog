@@ -119,7 +119,8 @@ Site web CV : https://alexg.ch
     <p>Voici comment l'utiliser. </p>
     <p>1. On commence par créer notre table :</p>
 
-    <pre class="code">
+    <pre>
+        <code>
 <span style="color: dodgerblue">CREATE TABLE</span> employe
 (
   emp_id <span style="color: orange">int</span> <span style="color: dodgerblue">PRIMARY KEY NOT NULL</span>,
@@ -128,80 +129,29 @@ Site web CV : https://alexg.ch
   emp_pre <span style="color: orange">varchar(40)</span> NOT NULL,
   emp_titre <span style="color: orange">varchar(40)</span> NOT NULL
 );
+        </code>
   </pre>
 
+
     <p>2. On y insère les données suivantes : </p>
-    <table class="tableauCode">
-        <tr>
-            <td style="color: dodgerblue">INSERT INTO</td>
-            <td>employe</td>
-            <td style="color: dodgerblue">VALUES</td>
-            <td>(1,</td>
-            <td>'/1/',</td>
-            <td>'Point',</td>
-            <td>'Pierre',</td>
-            <td>'PDG');</td>
-        </tr>
-        <tr>
-            <td style="color: dodgerblue">INSERT INTO</td>
-            <td>employe</td>
-            <td style="color: dodgerblue">VALUES</td>
-            <td>(8,</td>
-            <td>'/1/1/',</td>
-            <td>'Moine',</td>
-            <td>'Klein ',</td>
-            <td>'Directeur Marketing');</td>
-        </tr>
-        <tr>
-            <td style="color: dodgerblue">INSERT INTO</td>
-            <td>employe</td>
-            <td style="color: dodgerblue">VALUES</td>
-            <td>(2,</td>
-            <td>'/1/1/1/',</td>
-            <td>'Andre',</td>
-            <td>'Roger',</td>
-            <td>'Assistant Marketing');</td>
-        </tr>
-        <tr>
-            <td style="color: dodgerblue">INSERT INTO</td>
-            <td>employe</td>
-            <td style="color: dodgerblue">VALUES</td>
-            <td>(3,</td>
-            <td>'/1/1/2/',</td>
-            <td>'Vil',</td>
-            <td>'Mark',</td>
-            <td>'Assistant Marketing');</td>
-        </tr>
-        <tr>
-            <td style="color: dodgerblue">INSERT INTO</td>
-            <td>employe</td>
-            <td style="color: dodgerblue">VALUES</td>
-            <td>(7,</td>
-            <td>'/1/2/',</td>
-            <td>'Clon',</td>
-            <td>'Marie',</td>
-            <td>'Directrice RH');</td>
-        </tr>
-        <tr>
-            <td style="color: dodgerblue">INSERT INTO</td>
-            <td>employe</td>
-            <td style="color: dodgerblue">VALUES</td>
-            <td>(5,</td>
-            <td>'/1/2/1/',</td>
-            <td>'Tant',</td>
-            <td>'Elise',</td>
-            <td>'Assistante RH');</td>
-        </tr>
-    </table>
+    <code>
+        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (1, '/1/', 'Point', 'Pierre', 'PDG')<br>
+        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (8, '/1/1/', 'Moine', 'Klein', 'Directeur Marketing')<br>
+        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (2, '/1/1/1/', 'Andre', 'Roger', 'Assistant Marketing')<br>
+        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (3, '/1/1/2/', 'Vil', 'Mark', 'Assistant Marketing')<br>
+        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (7, '/1/2/', 'Clon', 'Marie', 'Directrice RH')<br>
+        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (5, '/1/2/1/', 'Tant', 'Elise', 'Assistante RH')<br>
+    </code>
     <p>Ici, on insère directement sous forme d'une chaine de caractères l'emplacement<br>
         hyerachique. Une conversion implicite est faite automatiquement.</p>
     <br>
     <p>3. Finalement, on récupère les donneés : </p>
-    <pre class="code">
-<span style="color: dodgerblue">SELECT </span>CAST(emp_hy <span style="color: dodgerblue">AS</span> <span
-            style="color: orange">nvarchar(100)</span>) <span style="color: dodgerblue">AS</span> Level, emp_id, emp_nom, emp_pre, emp_titre
-<span style="color: dodgerblue">FROM</span> employe <span style="color: dodgerblue">ORDER BY</span> emp_hy;
-  </pre>
+    <code>
+        <span style="color: dodgerblue">SELECT </span>CAST(emp_hy <span style="color: dodgerblue">AS</span> <span
+            style="color: orange">nvarchar(100)</span>) <span style="color: dodgerblue">AS</span> Level, emp_id,
+        emp_nom, emp_pre, emp_titre
+        <span style="color: dodgerblue">FROM</span> employe <span style="color: dodgerblue">ORDER BY</span> emp_hy;
+    </code>
 
     <p>Là, on converti vers un type texte afin qu'il soit lisible, autrement des données hexadécimales
         s'afficheront.<br>
@@ -272,24 +222,34 @@ Site web CV : https://alexg.ch
         <li>
             <strong>.ToString()</strong><br>
             Converti le noeud en chaine de charactères<br>
-            <span style="color: dodgerblue">SELECT</span> emp_hy.ToString(), emp_pre <span style="color: dodgerblue">WHERE</span>
+            <code>
+                <span style="color: dodgerblue">SELECT</span> emp_hy.ToString(), emp_pre <span
+                    style="color: dodgerblue">WHERE</span>
+            </code>
             emp_nom = 'Point' <br>
             Résultat req. : /1/, Pierre
         </li>
         <li style="padding: 1em 0 1em 0">
             <strong>HierarchiID::GetRoot()</strong><br>
             Retourne le noeud racine.<br>
-            <span style="color: dodgerblue">SELECT</span> emp_hy.ToString(), emp_pre <span style="color: dodgerblue">WHERE</span>
-            emp_hy = HierarchiID::GetRoot() <br>
+            <code>
+                <span style="color: dodgerblue">SELECT</span> emp_hy.ToString(), emp_pre <span
+                    style="color: dodgerblue">WHERE</span>
+                emp_hy = HierarchiID::GetRoot() <br>
+            </code>
             Résultat req. : /1/, Pierre
         </li>
         <li>
             <strong>.GetLevel()</strong><br>
             Retourne le niveau d'un noeud<br>
-            <span style="color: dodgerblue">SELECT </span>emp_hy.GetLevel() <span style="color: dodgerblue">AS</span>
-            Level, emp_id, emp_nom, emp_pre, emp_titre
-            <span style="color: dodgerblue">FROM</span> employe <span style="color: dodgerblue">ORDER BY</span> emp_hy
-            <br>
+            <code>
+                <span style="color: dodgerblue">SELECT </span>emp_hy.GetLevel() <span
+                    style="color: dodgerblue">AS</span>
+                Level, emp_id, emp_nom, emp_pre, emp_titre
+                <span style="color: dodgerblue">FROM</span> employe <span style="color: dodgerblue">ORDER BY</span>
+                emp_hy
+                <br>
+            </code>
             Résultat :
             <table class="tableauContour">
                 <tr>
@@ -455,14 +415,18 @@ Site web CV : https://alexg.ch
 
     <p>Requête à executer : </p>
     <p>
-        <span style="color: dodgerblue">SELECT</span> vio.vio_hy.ToString() <span style="color: dodgerblue">AS</span>
-        Level, vio.vio_nom, vio.vio_niveau, vln.vln_nom, vln.vln_pre <br>
-        <span style="color: dodgerblue">FROM</span> violon <span style="color: dodgerblue">AS</span> vio <span
-            style="color: dodgerblue">JOIN</span><br>
-        jouer <span style="color: dodgerblue">AS</span> j <span style="color: dodgerblue">ON</span> j.vio_id =
-        vio.vio_id <span style="color: dodgerblue">JOIN</span><br>
-        violoniste <span style="color: dodgerblue">AS</span> vln <span style="color: dodgerblue">ON</span> j.vln_id =
-        vln.vln_id <span style="color: dodgerblue">ORDER BY</span> vio.vio_hy<br>
+        <code>
+            <span style="color: dodgerblue">SELECT</span> vio.vio_hy.ToString() <span
+                style="color: dodgerblue">AS</span>
+            Level, vio.vio_nom, vio.vio_niveau, vln.vln_nom, vln.vln_pre <br>
+            <span style="color: dodgerblue">FROM</span> violon <span style="color: dodgerblue">AS</span> vio <span
+                style="color: dodgerblue">JOIN</span><br>
+            jouer <span style="color: dodgerblue">AS</span> j <span style="color: dodgerblue">ON</span> j.vio_id =
+            vio.vio_id <span style="color: dodgerblue">JOIN</span><br>
+            violoniste <span style="color: dodgerblue">AS</span> vln <span style="color: dodgerblue">ON</span> j.vln_id
+            =
+            vln.vln_id <span style="color: dodgerblue">ORDER BY</span> vio.vio_hy<br>
+        </code>
     </p>
 
     <p>Résultat :</p>
