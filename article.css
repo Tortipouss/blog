@@ -1,0 +1,54 @@
+#mainTitle {
+    font-size: 3em;
+    text-align: center;
+    margin: 1em auto auto auto;
+}
+
+#mainImg {
+    margin: 1em auto auto auto;
+    display: block;
+    border-radius: 1em;
+    width: 500px;
+}
+#tableMat {
+    margin-top: 2em;
+}
+
+#tableMatList{
+    line-height: 2em;
+}
+
+.tableauContour th, .tableauContour td {
+    padding: 0.3em;
+    text-align: center;
+}
+
+.tableauContour tr:nth-child(even) {
+    background-color: #777777;
+}
+
+.tableauContour tr:nth-child(odd) {
+    background-color: black;
+}
+
+
+.tableauCode th, .tableauCode td {
+    padding: 0 0.3em 0 0.3em;
+    text-align: left;
+    font-weight: bold;
+}
+
+.titleH1 {
+    margin-top: 2em;
+    font-size: 32px;
+}
+
+.titleH2 {
+    margin-top: 2em;
+    font-size: 20px;
+}
+
+pre.code {
+    font-family: Roboto;
+    font-weight: bold;
+}
