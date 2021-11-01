@@ -46,3 +46,9 @@ code, .code, .code tr td, .code tr th {
     font-family: consolas;
     font-size: 1em;
 }
+
+@media only screen and (max-width: 570px) {
+#mainImg {
+    width: 400px;
+}
+}
