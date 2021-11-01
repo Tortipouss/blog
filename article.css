@@ -51,4 +51,8 @@ code, .code, .code tr td, .code tr th {
 #mainImg {
     width: 400px;
 }
+    body{
+        margin-left: 2%;
+        margin-right: 2%;
+    }
 }
