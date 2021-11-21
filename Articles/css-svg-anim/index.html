@@ -1,0 +1,118 @@
+<!--
+Auteur : Alex Gallucci
+Site web CV : https://alexg.ch
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Alex - Animations JS avec les éléments vectoriels</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../article.css">
+    <link rel="stylesheet" href="anim.css">
+</head>
+<body>
+
+<!-- Barre supérieure -->
+<div class="linedImg">
+    <a href="https://al3x.ch">
+        <img src="../../img/profile.png" alt="profile"/>
+        <h1>Al3x.ch</h1>
+    </a>
+</div>
+
+<!-- Titre et image principal -->
+<svg id="viewBoxEP" width="43%" style="margin-right: auto; margin-left: auto; display: block" viewbox="0 0 380 220" xmlns="http://www.w3.org/2000/svg">
+    <text id="main_title"
+          class="path"
+          stroke="white"
+          stroke-width="0.2"
+          stroke-miterlimit="0"
+          fill="none"
+          x="10"
+          y="40">
+        <tspan font-size="2.1em" font-family="'Roboto', sans-serif" font-weight="bold">
+            Animations vectorielles
+        </tspan>
+    </text>
+
+    <path id="title_main_path"
+          class="path"
+          fill="none"
+          stroke="white"
+          stroke-width="5"
+          stroke-miterlimit="0"
+          d="m 193 60 v 13 h -125 v 144 h 250 v -144 h -125"
+    />
+
+    <path id="title_main_square"
+          class="path"
+          fill="none"
+          stroke="blue"
+          stroke-width="5"
+          stroke-miterlimit="0"
+          d="m 150 90 v 53 h -53 v -53 z"
+    />
+
+    <path id="title_main_triangle"
+          class="path"
+          fill="none"
+          stroke="green"
+          stroke-width="5"
+          stroke-miterlimit="0"
+          d="m 260 90 l -30 56 h 60 z"
+    />
+
+    <path id="title_main_losange"
+          class="path"
+          fill="none"
+          stroke="purple"
+          stroke-width="5"
+          stroke-miterlimit="0"
+          d="m 190 120 l -30 39 l 30 39 l 30 -39 z"
+    />
+</svg>
+
+<!-- Table de matières -->
+<h1 id="tableMat">Table des matières</h1>
+<ul id="tableMatList">
+    <li><a href="#SEC-introduction">Introduction</a></li>
+    <li>Fonctionnement</li>
+    <li>Animations
+        <ul>
+            <li>Infinie</li>
+            <li>Trait-tillés</li>
+        </ul>
+    </li>
+    <li> Mise en pratique</li>
+</ul>
+
+<section id="SEC-introduction">
+    <h1 class="titleH1">Introduction</h1>
+    <p>Le titre pricipal de cet article ainsi que les formes en dessous <br>ne sont en fait qu'une image vectorielle et animée.</p>
+    <p>L'avantage avec ce type d'images est qu'on peut directement les créer de A à Z, <br> sans aucun outils nécessaire.</p>
+
+    <p>Les images vectorielles ne sont que des instruction de reliement sur un plan cartésien.</p><br>
+
+    <p>En HTML, c'est la balise &lt;svg&gt; &lt;\svg&gt; qui s'occupe de cela :</p>
+    <p>On commence par défnir la taille du plan cartésien avec l'attribut <strong>viewbox</strong></p>
+    <code>&lt;<span style="color: deepskyblue">svg</span> <span style="color: orange">viewbox</span>="0 0 380 220"&gt;</code>
+    <p>Ici, 380 points de largeur (Axe <strong>X</strong>) et 220 points de longeur (Axe <strong>Y</strong>).</p>
+    <p>On parle bien ici de <strong>points</strong> et pas de pixels, d'em, d'rem ou d'une quelconque unité.</p>
+    <p>Les points ne sont pas une unité. Si l'on définis en CSS que notre <br>balise &lt;svg&gt; à une largeur de 200px,
+        notre élément aura toujours<br> 220 points de longeur. Le plan cartésien est <strong>statique</strong> et surtout pas dynamique.</p>
+
+    <p>Le namespace de la balise &lt;svg&gt; à besoin d'être spécifié explicitement :</p>
+    <code>&lt;<span style="color: deepskyblue">svg</span> <span style="color: orange">viewbox</span>="0 0 380 220"&gt;  <span style="color: orange">xmlns</span>="http://www.w3.org/2000/svg"&gt;</code>
+
+
+</section>
+
+<script src="anim.js"></script>
+</body>
+</html>

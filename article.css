@@ -10,6 +10,7 @@
     border-radius: 1em;
     width: 500px;
 }
+
 #tableMat {
     margin-top: 2em;
 }
@@ -32,12 +33,12 @@
 }
 
 
-.titleH1 {
+h1 {
     margin-top: 2em;
     font-size: 32px;
 }
 
-.titleH2 {
+h2 {
     margin-top: 2em;
     font-size: 20px;
 }

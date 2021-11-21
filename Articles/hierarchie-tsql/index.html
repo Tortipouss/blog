@@ -20,7 +20,7 @@ Site web CV : https://alexg.ch
 <!-- Barre supérieure -->
 <div class="linedImg">
     <a href="https://al3x.ch">
-        <img src="../../profile.png" alt="profile"/>
+        <img src="../../img/profile.png" alt="profile"/>
         <h1>Al3x.ch</h1>
     </a>
 </div>
@@ -34,18 +34,14 @@ Site web CV : https://alexg.ch
 <h1 id="tableMat">Table des matières</h1>
 <ul id="tableMatList">
     <li><a href="#SEC-introduction">Introduction</a></li>
-    <li> Avec HierarachiID
+    <li><a href="#SEC-hierarchiID">Avec HierarachiID</a>
         <ul>
-            <li>Méthodes</li>
-            <li>Requête sur plusieurs tables</li>
-            <li>Traduction d'une requête Oracle (PL/SQL) vers TSQL</li>
+            <li><a href="#SEC-Syntaxe">Méthodes</a></li>
+            <li><a href="#SEC-req1">Requête sur plusieurs tables</a></li>
+            <li><a href="#SEC-trad">Traduction d'une requête Oracle (PL/SQL) vers TSQL</a></li>
         </ul>
     </li>
-    <li> Avec colonne ID
-        <ul>
-            <li>Requête sur 1 table</li>
-        </ul>
-    </li>
+    <li><a href="#SEC-Oracle">Avec colonne ID</a></li>
 </ul>
 
 <section id="SEC-introduction">
@@ -135,12 +131,18 @@ Site web CV : https://alexg.ch
 
     <p>2. On y insère les données suivantes : </p>
     <code>
-        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (1, '/1/', 'Point', 'Pierre', 'PDG')<br>
-        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (8, '/1/1/', 'Moine', 'Klein', 'Directeur Marketing')<br>
-        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (2, '/1/1/1/', 'Andre', 'Roger', 'Assistant Marketing')<br>
-        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (3, '/1/1/2/', 'Vil', 'Mark', 'Assistant Marketing')<br>
-        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (7, '/1/2/', 'Clon', 'Marie', 'Directrice RH')<br>
-        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (5, '/1/2/1/', 'Tant', 'Elise', 'Assistante RH')<br>
+        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (1,
+        '/1/', 'Point', 'Pierre', 'PDG')<br>
+        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (8,
+        '/1/1/', 'Moine', 'Klein', 'Directeur Marketing')<br>
+        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (2,
+        '/1/1/1/', 'Andre', 'Roger', 'Assistant Marketing')<br>
+        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (3,
+        '/1/1/2/', 'Vil', 'Mark', 'Assistant Marketing')<br>
+        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (7,
+        '/1/2/', 'Clon', 'Marie', 'Directrice RH')<br>
+        <span style="color: dodgerblue">INSERT INTO</span> employe <span style="color: dodgerblue">VALUES</span> (5,
+        '/1/2/1/', 'Tant', 'Elise', 'Assistante RH')<br>
     </code>
     <p>Ici, on insère directement sous forme d'une chaine de caractères l'emplacement<br>
         hyerachique. Une conversion implicite est faite automatiquement.</p>
@@ -322,29 +324,29 @@ Site web CV : https://alexg.ch
     <div id="SqlTable3" style="display: block">
 
         <div style="display:inline-block">
-        <span>Violoniste</span>
-        <table style="display: inline" class="tableauContour">
-            <tr>
-                <th>vln_id</th>
-                <th>vln_nom</th>
-                <th>vln_pre</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Markus</td>
-                <td>Pan</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Helene</td>
-                <td>Vram</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Adam</td>
-                <td>Pion</td>
-            </tr>
-        </table>
+            <span>Violoniste</span>
+            <table style="display: inline" class="tableauContour">
+                <tr>
+                    <th>vln_id</th>
+                    <th>vln_nom</th>
+                    <th>vln_pre</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Markus</td>
+                    <td>Pan</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Helene</td>
+                    <td>Vram</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Adam</td>
+                    <td>Pion</td>
+                </tr>
+            </table>
         </div>
 
         <div style="display:inline-block;margin:5%">
@@ -370,51 +372,51 @@ Site web CV : https://alexg.ch
         </div>
 
         <div style="display: inline-block">
-        <span>Violon</span>
-        <table style="display: inline" class="tableauContour">
-            <tr>
-                <th>vio_id</th>
-                <th>vio_hy</th>
-                <th>vio_nom</th>
-                <th>vio_niveau</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>/3/1/</td>
-                <td>Hedersine HEV1</td>
-                <td>Debutant</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>/2/1/</td>
-                <td>Goetz Menuett-Heritage 98</td>
-                <td>Avance</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>/1/1/</td>
-                <td>Bavarian 1720 Stradivarius</td>
-                <td>Professionnel</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>/1/2/</td>
-                <td>Wessex XV Series</td>
-                <td>Professionnel</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>/2/2/</td>
-                <td>Hedersine Whitmarsh</td>
-                <td>Avance</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>/3/2/</td>
-                <td>Stentor student</td>
-                <td>Debutant</td>
-            </tr>
-        </table>
+            <span>Violon</span>
+            <table style="display: inline" class="tableauContour">
+                <tr>
+                    <th>vio_id</th>
+                    <th>vio_hy</th>
+                    <th>vio_nom</th>
+                    <th>vio_niveau</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>/3/1/</td>
+                    <td>Hedersine HEV1</td>
+                    <td>Debutant</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>/2/1/</td>
+                    <td>Goetz Menuett-Heritage 98</td>
+                    <td>Avance</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>/1/1/</td>
+                    <td>Bavarian 1720 Stradivarius</td>
+                    <td>Professionnel</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>/1/2/</td>
+                    <td>Wessex XV Series</td>
+                    <td>Professionnel</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>/2/2/</td>
+                    <td>Hedersine Whitmarsh</td>
+                    <td>Avance</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>/3/2/</td>
+                    <td>Stentor student</td>
+                    <td>Debutant</td>
+                </tr>
+            </table>
         </div>
     </div>
 
@@ -469,8 +471,47 @@ Site web CV : https://alexg.ch
 
     <h2 id="SEC-trad" class="titleH2">Traduction d'une requête Oracle (PL/SQL) vers TSQL</h2>
 </section>
-<section>
+<section id="SEC-Oracle">
+    <h1>Avec Colonne ID</h1>
+    <p>La 2ème méthode consiste à utiliser une colonne identifiant, de type INT <br>
+        et de faire une boucle afin de remonter à l'enregistrement parent.</p>
+    <p>Voici un exemple :</p>
+    <pre>
+        <code>
+        WITH descendant AS (
 
+        <span style="color: dodgerblue">SELECT</span> EMPLOYE.EMP_ID,
+        EMPLOYE.EMP_MAN_ID,
+        EMPLOYE.EMP_NOM,
+        EMPLOYE.EMP_PRE,
+        EMPLOYE.EMP_TITRE,
+        LEFT(CONCAT(CONVERT(<span style="color: orange">nvarchar(20)</span>, 1), ' - ', EMPLOYE.EMP_TRI),20) <span style="color: dodgerblue">AS</span> ordre
+        <span style="color: dodgerblue">FROM</span> EMPLOYE
+        <span style="color: dodgerblue">WHERE</span> EMPLOYE.EMP_MAN_ID <span style="color: dodgerblue">IS</span> null
+
+        UNION ALL
+
+        <span style="color: dodgerblue">SELECT</span> EMPLOYE.EMP_ID,
+        EMPLOYE.EMP_MAN_ID,
+        EMPLOYE.EMP_NOM,
+        EMPLOYE.EMP_PRE,
+        EMPLOYE.EMP_TITRE,
+        LEFT(CONCAT(descendant.ordre , ' - ', EMPLOYE.EMP_TRI),20) <span style="color: dodgerblue">AS</span> ordre
+        <span style="color: dodgerblue">FROM</span> EMPLOYE, descendant
+        <span style="color: dodgerblue">WHERE</span> descendant.EMP_ID = EMPLOYE.EMP_MAN_ID
+
+        )
+
+        <span style="color: dodgerblue">SELECT</span> descendant.EMP_ID,
+        descendant.EMP_MAN_ID <span style="color: dodgerblue">AS</span> ID_PERE,
+        descendant.EMP_NOM,
+        descendant.EMP_PRE,
+        descendant.EMP_TITRE,
+        descendant.ordre <span style="color: dodgerblue">AS</span> NIVEAU
+        <span style="color: dodgerblue">FROM</span> descendant
+        <span style="color: dodgerblue">ORDER BY</span> NIVEAU <span style="color: dodgerblue">ASC</span>
+    </code>
+    </pre>
 </section>
 </body>
 </html>

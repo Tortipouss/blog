@@ -1,0 +1,22 @@
+.path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    #viewBoxEP {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    #viewBoxEP {
+        width: 80%;
+    }
+}
