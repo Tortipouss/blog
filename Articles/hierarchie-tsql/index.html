@@ -38,6 +38,7 @@ Site web CV : https://alexg.ch
         <ul>
             <li><a href="#SEC-Syntaxe">Méthodes</a></li>
             <li><a href="#SEC-req1">Requête sur plusieurs tables</a></li>
+            <li><a href="#SEC-CS">Cheat-Sheet</a></li>
             <li><a href="#SEC-trad">Traduction d'une requête Oracle (PL/SQL) vers TSQL</a></li>
         </ul>
     </li>
@@ -468,6 +469,97 @@ Site web CV : https://alexg.ch
         </tr>
     </table>
 
+    <h2 id="SEC-CS" class="titleH2">Cheat-sheet</h2>
+    <p>Voici une feuille d'aide que j'ai pu conceptualiser lors de mon stage.<br>
+    Celle-ci regroupe toute sortes de manipulations liées aux hyerarchies.</p>
+    <pre>
+        -- Ajout d'une colonne hiérarchique dans une table
+        Alter table USINE ADD USI_H hierarchyid
+
+        -- Mis à jour d'un enregistement
+        UPDATE dbo.USINE SET USI_H = '/1/' WHERE usi_ID = 38
+
+        -- Comparaison
+        SELECT USI_H.ToString() FROM USINE WHERE [USI_H] < '/3/'
+        SELECT USI_H.ToString() FROM USINE WHERE [USI_H] > '/2/1/'
+
+
+
+        /* Récupèrer l'élément parent */
+        SELECT USI_ID, USI_NOM, USI_H.ToString() from USINE where (
+            SELECT USI_H.GetAncestor(1) as parent FROM USINE WHERE USI_ID = 68
+        ) = USI_H
+
+
+        /* Récupèrer l'élément + les éléments enfants */
+        SELECT USI_ID, USI_NOM, USI_H.ToString() from USINE WHERE USI_H.IsDescendantOf(
+            (SELECT USI_H.ToString() from USINE WHERE USI_ID = 40)
+        ) = 1
+
+
+        /* Récupèrer l'élément + tous les éléments parents */
+        SELECT t1.USI_H.ToString() as Path, t1.USI_ID
+        FROM (SELECT * FROM USINE WHERE USI_ID = 68) t2,
+        USINE t1
+        WHERE t2.USI_H.IsDescendantOf(t1.USI_H) = 1 ORDER BY Path
+
+        /* Récupère tous les éléments d'un niveau précis */
+        SELECT USI_ID, USI_NOM, USI_H.ToString() FROM USINE WHERE USI_H.GetLevel() = 1
+
+
+
+        --=======================================================================================
+        -- Retourne le future parent niveau 1 de la hiérarchie
+        -- Ex: Si le dernier noeud d'une hierarchie est /107/6/ : retourne /108/
+        --                                                /16/    : retourne /17/
+        --                                                /10/1/2/: retourne /11/
+        --
+        --=======================================================================================
+
+        SELECT top 1 hierarchyid::GetRoot().GetDescendant(t1.hyer ,null).ToString() as hyer from (
+
+            SELECT top 1 t0.hyer.GetAncestor(t0.niv - 1) as hyer from (
+
+                SELECT top 1 USI_H.GetLevel() as niv, USI_H as hyer from USINE order by USI_H desc
+
+            ) t0
+
+        ) t1, USINE
+
+
+
+        --=======================================================================================
+        -- Retourne le future frère du dernier enregistrement de la hiérarchie
+        -- Ex: Si le dernier noeud est    /10/1/4/    :    retourne /10/1/5/
+        --                                /2/2/        :    retourne /2/3/
+        --                                /20/        :    retourne /21/
+        --
+        -- Possibilité de changer le noeud de départ en changant la condition 1=1
+        --=======================================================================================
+        SELECT top 1 T1.hyer.GetAncestor(1).GetDescendant(T1.hyer ,null).ToString() AS hyer FROM (
+            SELECT top 1 USI_H as hyer from USINE where 1=1 order by hyer desc
+        ) T1, USINE order by USI_H desc
+
+
+
+
+        --============================================================================================================
+        -- Retourne le future dernier fils d'un enregistrement de la hiérarchie
+        -- Ex: Si le noeud noeud est    /10/1/    ET que le dernier fils de ce noeud est /10/1/7    :    retourne /10/1/8/
+        --                                /2/2/3/    ET que le dernier fils de ce noeud est /2/2/3/4    :    retourne /2/2/3/5
+        --                                /20/    ET que le dernier fils de ce noeud est /20/3    :    retourne /20/4/
+        --
+        -- Possibilité de changer le noeud de départ en changant la condition 1=1
+        --===========================================================================================================
+
+        SELECT top 1 T1.hyer.GetAncestor(1).GetDescendant(T1.hyer ,null).ToString() AS hyer FROM (
+            SELECT top 1 USI_H as hyer from USINE WHERE USI_H.IsDescendantOf(
+            (
+                SELECT USI_H from USINE WHERE CATOUT_ID = 35
+            )
+            ) = 1 order by hyer desc
+        ) T1, USINE order by USI_H desc
+    </pre>
 
     <h2 id="SEC-trad" class="titleH2">Traduction d'une requête Oracle (PL/SQL) vers TSQL</h2>
 </section>
