@@ -477,7 +477,7 @@ Site web CV : https://alexg.ch
         Alter table USINE ADD USI_H hierarchyid
 
         -- Mis à jour d'un enregistement
-        UPDATE dbo.USINE SET USI_H = '/1/' WHERE usi_ID = 38
+        UPDATE dbo.USINE SET USI_H = '/1/' WHERE USI_ID = 38
 
         -- Comparaison
         SELECT USI_H.ToString() FROM USINE WHERE [USI_H] < '/3/'
@@ -555,7 +555,7 @@ Site web CV : https://alexg.ch
         SELECT top 1 T1.hyer.GetAncestor(1).GetDescendant(T1.hyer ,null).ToString() AS hyer FROM (
             SELECT top 1 USI_H as hyer from USINE WHERE USI_H.IsDescendantOf(
             (
-                SELECT USI_H from USINE WHERE CATOUT_ID = 35
+                SELECT USI_H from USINE WHERE USI_ID = 35
             )
             ) = 1 order by hyer desc
         ) T1, USINE order by USI_H desc
