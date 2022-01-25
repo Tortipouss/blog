@@ -100,7 +100,9 @@ div.desc {
     display: inline-block;
 }
 
-.bg-tsql{
+.bg-tsql,
+.bg-plSql,
+.bg-sql{
     background-color: #c27e34;
 }
 
@@ -115,11 +117,16 @@ div.desc {
 .bg-vb{
     background-color: blueviolet;
 }
-.bg-plSql{
-    background-color: goldenrod;
-}
 .bg-js{
     background-color: gray;
+}
+
+.bg-php{
+    background-color: darkblue;
+}
+
+.bg-construct{
+    background-color: darkred;
 }
 
 
